@@ -197,9 +197,7 @@ modules:
       - "-DLLVM_ENABLE_Z3_SOLVER=OFF"
       - "-DCMAKE_CXX_STANDARD=20"
     cleanup:
-      - "/bin"
-      - "/include"
-      - "/lib/cmake"
+      - "*"
     sources:
       - type: "git"
         url: "https://github.com/RPCS3/llvm-mirror.git"
