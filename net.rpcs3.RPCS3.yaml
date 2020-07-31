@@ -94,8 +94,8 @@ modules:
     sources:
       - type: "git"
         url: "https://gitlab.freedesktop.org/libevdev/libevdev.git"
-        tag: "libevdev-1.9.0"
-        commit: "468760ba11438734912f793b1de00cb0f243497f"
+        tag: "libevdev-1.9.1"
+        commit: "bcb79eed391d06fc4e75a39d19da91b41ff344ea"
 
   - name: "ffmpeg"
     config-opts:
