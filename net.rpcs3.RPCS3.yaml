@@ -1,6 +1,6 @@
 id: "net.rpcs3.RPCS3"
 runtime: "org.kde.Platform"
-runtime-version: "5.14"
+runtime-version: "5.15"
 sdk: "org.kde.Sdk"
 command: "rpcs3"
 rename-desktop-file: "rpcs3.desktop"
@@ -15,6 +15,15 @@ finish-args:
   - "--device=all"
   - "--filesystem=host:ro"
   - "--talk-name=org.a11y.Bus"
+add-extensions:
+  org.freedesktop.Platform.ffmpeg-full:
+    directory: "lib/ffmpeg"
+    add-ld-path: "."
+    version: "20.08"
+    autodownload: true
+    autodelete: false
+cleanup-commands:
+  - "mkdir -p ${FLATPAK_DEST}/lib/ffmpeg"
 modules:
   - "shared-modules/glu/glu-9.json"
   - "shared-modules/glew/glew.json"
@@ -97,90 +106,17 @@ modules:
         tag: "libevdev-1.9.1"
         commit: "bcb79eed391d06fc4e75a39d19da91b41ff344ea"
 
-  - name: "ffmpeg"
-    config-opts:
-      - "--disable-debug"
-      - "--disable-doc"
-      - "--disable-static"
-      - "--enable-optimizations"
-      - "--enable-shared"
-      - "--disable-ffplay"
-      - "--disable-ffprobe"
-      - "--disable-everything"
-      - "--enable-gnutls"
-      - "--enable-libaom"
-      - "--enable-libdav1d"
-      - "--enable-libfdk-aac"
-      - "--enable-libmp3lame"
-      - "--enable-libfontconfig"
-      - "--enable-libfreetype"
-      - "--enable-libopus"
-      - "--enable-libpulse"
-      - "--enable-libspeex"
-      - "--enable-libtheora"
-      - "--enable-libvorbis"
-      - "--enable-libvpx"
-      - "--enable-libwebp"
-      - "--enable-openal"
-      - "--enable-opengl"
-      - "--enable-sdl2"
-      - "--enable-vulkan"
-      # audio-encoders
-      - "--enable-encoder=
-          ac3,alac,flac,libfdk_aac,g723_1,mp2,libmp3lame,libopus,pcm_alaw,pcm_mulaw,\
-          pcm_f32le,pcm_s16be,pcm_s24be,pcm_s16le,pcm_s24le,pcm_s32le,\
-          pcm_u8,tta,libvorbis,wavpack,\
-          wmav1,wmav2"
-      # audio-decoders
-      - "--enable-decoder=\
-          ac3,alac,flac,g723_1,g729,libfdk_aac,libopus,mp2,mp3,m4a,pcm_alaw,pcm_mulaw,\
-          pcm_f32le,pcm_s16be,pcm_s24be,pcm_s16le,pcm_s24le,pcm_s32le,\
-          pcm_u8,tta,vorbis,wavpack,ape,dca,eac3,mlp,tak,truehd,wmav1,wmav2,wmapro"
-      # video-encoders
-      - "--enable-encoder=\
-          ass,ffv1,libaom_av1,libvpx_vp8,libvpx_vp9,rawvideo,theora,\
-          h263,h264,wmv1,wmv2"
-      # video-decoders
-      - "--enable-decoder=\
-          ass,ffv1,libaom_av1,libdav1d,libvpx_vp8,libvpx_vp9,rawvideo,theora,vp8,vp9,\
-          cinepak,flv,hevc,h263,h264,indeo2,indeo3,indeo4,indeo5,mpeg2video,mpeg4,msmpeg4,msmpeg4v1,msmpeg4v2,msmpeg4v3,vp6,vp6a,vp6f,wmv1,wmv2,wmv3,wmv3image"
-      # image-formats
-      - "--enable-encoder=gif,png,tiff,webp"
-      - "--enable-decoder=gif,png,tiff,webp"
-      # hwaccels
-      - "--enable-hwaccel=h264_vaapi,h264_vdpau,hevc_vaapi,hevc_vdpau"
-      # muxers
-      - "--enable-muxer=ac3,ass,flac,gif,matroska,mp3,mpegvideo,ogg,opus,wav"
-      # demuxers
-      - "--enable-demuxer=\
-          aac,ac3,ass,flac,gif,matroska,mov,mp3,mpegvideo,ogg,wav,\
-          avi,h264,m4v,ape"
-      # parsers
-      - "--enable-parser=\
-          aac,ac3,flac,mpegaudio,mpeg4video,opus,vp3,vp8,vorbis,\
-          hevc,h264,dca"
-      # filters
-      - "--enable-filter=crop,scale"
-      - "--enable-protocol=file"
-    cleanup:
-      - "/lib/*.so"
-      - "/include"
-      - "/lib/pkgconfig"
-      - "/share/ffmpeg"
-    sources:
-      - type: "git"
-        url: "https://git.ffmpeg.org/ffmpeg.git"
-        tag: "n4.3.1"
-        commit: "6b6b9e593dd4d3aaf75f48d40a13ef03bdef9fdb"
-
   - name: "rpcs3-llvm"
     buildsystem: "cmake-ninja"
     builddir: true
     build-options:
       cxxflags: "-msse -msse2"
+      ldflags: "-fuse-ld=lld"
       env:
+        AR: "llvm-ar"
         CC: "clang"
         CXX: "clang++"
+        RANLIB: "llvm-ranlib"
     config-opts:
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DBUILD_SHARED_LIBS=OFF"
@@ -195,7 +131,6 @@ modules:
       - "-DLLVM_INCLUDE_UTILS=OFF"
       - "-DLLVM_USE_INTEL_JITEVENTS=ON"
       - "-DLLVM_ENABLE_Z3_SOLVER=OFF"
-      - "-DCMAKE_CXX_STANDARD=20"
     cleanup:
       - "*"
     sources:
@@ -206,8 +141,12 @@ modules:
   - name: "rpcs3"
     buildsystem: "cmake-ninja"
     build-options:
-      cflags: "-fuse-linker-plugin -fuse-ld=gold"
-      cxxflags: "-fuse-linker-plugin -fuse-ld=gold"
+      ldflags: "-fuse-ld=lld"
+      env:
+        AR: "llvm-ar"
+        CC: "clang"
+        CXX: "clang++"
+        RANLIB: "llvm-ranlib"
     config-opts:
       - "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
       - "-DBUILD_LLVM_SUBMODULE=OFF"
