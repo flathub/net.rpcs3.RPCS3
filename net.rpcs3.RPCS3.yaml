@@ -27,6 +27,7 @@ cleanup-commands:
 modules:
   - "shared-modules/glu/glu-9.json"
   - "shared-modules/glew/glew.json"
+  - "shared-modules/libusb/libusb.json"
 
   - name: "libevdev"
     buildsystem: "meson"
@@ -94,6 +95,7 @@ modules:
       - "-DUSE_SYSTEM_LIBPNG=ON"
       - "-DUSE_SYSTEM_ZLIB=ON"
       - "-DUSE_SYSTEM_CURL=ON"
+      - "-DUSE_SYS_LIBUSB=ON"
     post-install:
       - |
         set -eux;
@@ -107,4 +109,4 @@ modules:
     sources:
       - type: "git"
         url: "https://github.com/RPCS3/rpcs3.git"
-        commit: "583ed6171280ee6af777458a9f56d470b5498652"
+        commit: "9e14d240a82fa0645de5073aebafa30bf7288e6e"
