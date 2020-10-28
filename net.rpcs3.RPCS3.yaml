@@ -42,8 +42,8 @@ modules:
     sources:
       - type: "git"
         url: "https://gitlab.freedesktop.org/libevdev/libevdev.git"
-        tag: "libevdev-1.9.1"
-        commit: "bcb79eed391d06fc4e75a39d19da91b41ff344ea"
+        tag: "libevdev-1.10.0"
+        commit: "e6f3141eb626f703796bd537469221c8261489b5"
 
   - name: "rpcs3-llvm"
     buildsystem: "cmake-ninja"
