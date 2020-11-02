@@ -49,7 +49,7 @@ modules:
     buildsystem: "cmake-ninja"
     builddir: true
     build-options:
-      cxxflags: "-msse -msse2"
+      cxxflags: "-msse -msse2 -mcx16"
       ldflags: "-fuse-ld=lld"
       env:
         AR: "llvm-ar"
@@ -70,12 +70,13 @@ modules:
       - "-DLLVM_INCLUDE_UTILS=OFF"
       - "-DLLVM_USE_INTEL_JITEVENTS=ON"
       - "-DLLVM_ENABLE_Z3_SOLVER=OFF"
+      - "-DCMAKE_CXX_STANDARD=17"
     cleanup:
       - "*"
     sources:
       - type: "git"
         url: "https://github.com/RPCS3/llvm-mirror.git"
-        commit: "bb9faf3c8b4e0de05d07cbe623a1bf45874b5174"
+        commit: "84c913e8b4940027f53be44672da3bca553be3a1"
 
   - name: "rpcs3"
     buildsystem: "cmake-ninja"
