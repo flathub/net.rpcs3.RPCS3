@@ -110,4 +110,4 @@ modules:
     sources:
       - type: "git"
         url: "https://github.com/RPCS3/rpcs3.git"
-        commit: "ab23e5ca0e8e319865daebac032e174532b70fa3"
+        commit: "eec11bfba93e4e1c8d0c6105685ea70aee8000c1"
