@@ -2,6 +2,8 @@ id: "net.rpcs3.RPCS3"
 runtime: "org.kde.Platform"
 runtime-version: "5.15"
 sdk: "org.kde.Sdk"
+sdk-extensions:
+  - "org.freedesktop.Sdk.Extension.llvm11"
 command: "rpcs3"
 rename-desktop-file: "rpcs3.desktop"
 rename-appdata-file: "rpcs3.appdata.xml"
@@ -50,12 +52,13 @@ modules:
     builddir: true
     build-options:
       cxxflags: "-msse -msse2 -mcx16"
-      ldflags: "-fuse-ld=lld"
       env:
         AR: "llvm-ar"
         CC: "clang"
         CXX: "clang++"
         RANLIB: "llvm-ranlib"
+      ldflags: "-fuse-ld=lld"
+      prepend-path: "/usr/lib/sdk/llvm11/bin"
     config-opts:
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DBUILD_SHARED_LIBS=OFF"
@@ -76,17 +79,19 @@ modules:
     sources:
       - type: "git"
         url: "https://github.com/RPCS3/llvm-mirror.git"
-        commit: "cb7748dfa0d615e9f5ea9f31e0ce40fe9aeac595"
+        commit: "716bb292ba3b4e5c0ceff72fee911ed2b53232cf"
 
   - name: "rpcs3"
     buildsystem: "cmake-ninja"
     build-options:
-      ldflags: "-fuse-ld=lld"
       env:
         AR: "llvm-ar"
         CC: "clang"
         CXX: "clang++"
+        LD_RUN_PATH: "/usr/lib/sdk/llvm11/lib"
         RANLIB: "llvm-ranlib"
+      ldflags: "-L/usr/lib/sdk/llvm11/lib -fuse-ld=lld"
+      prepend-path: "/usr/lib/sdk/llvm11/bin"
     config-opts:
       - "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
       - "-DBUILD_LLVM_SUBMODULE=OFF"
@@ -106,8 +111,8 @@ modules:
         COMM_TAG="$(grep 'version{.*}' rpcs3/rpcs3_version.cpp | awk -F[\{,] '{printf "%d.%d.%d", $2, $3, $4}')";
         COMM_COUNT="$(git rev-list --count HEAD)";
         COMM_HASH="$(git rev-parse --short=8 HEAD)";
-        sed -i 's|</component>|<content_rating type="oars-1.1"/><releases><release date="'$(date '+%Y-%m-%d')'" version="'"${COMM_TAG}"'-'"${COMM_COUNT}"'-'"${COMM_HASH}"'"/></releases></component>|' ${FLATPAK_DEST}/share/metainfo/rpcs3.appdata.xml;
+        sed -i 's|</component>|<content_rating type="oars-1.1"/><releases><release date="'$(git show -s --format=%cs)'" version="'"${COMM_TAG}"'-'"${COMM_COUNT}"'-'"${COMM_HASH}"'"/></releases></component>|' ${FLATPAK_DEST}/share/metainfo/rpcs3.appdata.xml;
     sources:
       - type: "git"
         url: "https://github.com/RPCS3/rpcs3.git"
-        commit: "bd269bccaf68caff66324580c0417ca68fc5805c"
+        commit: "566286773055e61724edd98861a17397fecdb97f"
