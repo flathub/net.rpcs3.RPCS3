@@ -50,12 +50,6 @@ modules:
     builddir: true
     build-options:
       cxxflags: "-msse -msse2 -mcx16"
-      ldflags: "-fuse-ld=lld"
-      env:
-        AR: "llvm-ar"
-        CC: "clang"
-        CXX: "clang++"
-        RANLIB: "llvm-ranlib"
     config-opts:
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DBUILD_SHARED_LIBS=OFF"
@@ -80,13 +74,6 @@ modules:
 
   - name: "rpcs3"
     buildsystem: "cmake-ninja"
-    build-options:
-      ldflags: "-fuse-ld=lld"
-      env:
-        AR: "llvm-ar"
-        CC: "clang"
-        CXX: "clang++"
-        RANLIB: "llvm-ranlib"
     config-opts:
       - "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
       - "-DBUILD_LLVM_SUBMODULE=OFF"
@@ -110,4 +97,4 @@ modules:
     sources:
       - type: "git"
         url: "https://github.com/RPCS3/rpcs3.git"
-        commit: "566286773055e61724edd98861a17397fecdb97f"
+        commit: "a47bda026bf61999d6cecda0297c9154f51b090d"
