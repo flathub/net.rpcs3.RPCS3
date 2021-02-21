@@ -1,102 +1,102 @@
-id: "net.rpcs3.RPCS3"
-runtime: "org.kde.Platform"
-runtime-version: "5.15"
-sdk: "org.kde.Sdk"
-command: "rpcs3"
-rename-desktop-file: "rpcs3.desktop"
-rename-appdata-file: "rpcs3.appdata.xml"
-rename-icon: "rpcs3"
+id: net.rpcs3.RPCS3
+runtime: org.kde.Platform
+runtime-version: '5.15'
+sdk: org.kde.Sdk
+command: rpcs3
+rename-desktop-file: rpcs3.desktop
+rename-appdata-file: rpcs3.appdata.xml
+rename-icon: rpcs3
 finish-args:
-  - "--share=ipc"
-  - "--socket=wayland"
-  - "--socket=fallback-x11"
-  - "--socket=pulseaudio"
-  - "--share=network"
-  - "--device=all"
-  - "--filesystem=host:ro"
-  - "--talk-name=org.a11y.Bus"
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --share=network
+  - --device=all
+  - --filesystem=host:ro
+  - --talk-name=org.a11y.Bus
 add-extensions:
   org.freedesktop.Platform.ffmpeg-full:
-    directory: "lib/ffmpeg"
-    add-ld-path: "."
-    version: "20.08"
+    directory: lib/ffmpeg
+    add-ld-path: .
+    version: '20.08'
     autodownload: true
     autodelete: false
 cleanup-commands:
-  - "mkdir -p ${FLATPAK_DEST}/lib/ffmpeg"
+  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
 modules:
-  - "shared-modules/glu/glu-9.json"
-  - "shared-modules/glew/glew.json"
-  - "shared-modules/libusb/libusb.json"
+  - shared-modules/glu/glu-9.json
+  - shared-modules/glew/glew.json
+  - shared-modules/libusb/libusb.json
 
-  - name: "libevdev"
-    buildsystem: "meson"
+  - name: libevdev
+    buildsystem: meson
     config-opts:
-      - "-Dtests=disabled"
-      - "-Ddocumentation=disabled"
+      - -Dtests=disabled
+      - -Ddocumentation=disabled
     cleanup:
-      - "/bin"
-      - "/include"
-      - "/lib/pkgconfig"
-      - "/share"
+      - /bin
+      - /include
+      - /lib/pkgconfig
+      - /share
     sources:
-      - type: "archive"
-        url: "https://www.freedesktop.org/software/libevdev/libevdev-1.11.0.tar.xz"
-        sha256: "63f4ea1489858a109080e0b40bd43e4e0903a1e12ea888d581db8c495747c2d0"
+      - type: archive
+        url: https://www.freedesktop.org/software/libevdev/libevdev-1.11.0.tar.xz
+        sha256: 63f4ea1489858a109080e0b40bd43e4e0903a1e12ea888d581db8c495747c2d0
         x-checker-data:
-          type: "anitya"
+          type: anitya
           project-id: 20540
-          url-template: "https://www.freedesktop.org/software/libevdev/libevdev-$version.tar.xz"
+          url-template: https://www.freedesktop.org/software/libevdev/libevdev-$version.tar.xz
 
-  - name: "rpcs3-llvm"
-    buildsystem: "cmake-ninja"
+  - name: rpcs3-llvm
+    buildsystem: cmake-ninja
     builddir: true
     build-options:
-      cxxflags: "-msse -msse2 -mcx16"
-      ldflags: "-fuse-ld=lld"
+      cxxflags: -msse -msse2 -mcx16
+      ldflags: -fuse-ld=lld
       env:
-        AR: "llvm-ar"
-        CC: "clang"
-        CXX: "clang++"
-        RANLIB: "llvm-ranlib"
+        AR: llvm-ar
+        CC: clang
+        CXX: clang++
+        RANLIB: llvm-ranlib
     config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DBUILD_SHARED_LIBS=OFF"
-      - "-DLLVM_CCACHE_BUILD=ON"
-      - "-DLLVM_TARGETS_TO_BUILD='X86'"
-      - "-DLLVM_BUILD_RUNTIME=OFF"
-      - "-DLLVM_BUILD_TOOLS=OFF"
-      - "-DLLVM_INCLUDE_DOCS=OFF"
-      - "-DLLVM_INCLUDE_EXAMPLES=OFF"
-      - "-DLLVM_INCLUDE_TESTS=OFF"
-      - "-DLLVM_INCLUDE_TOOLS=OFF"
-      - "-DLLVM_INCLUDE_UTILS=OFF"
-      - "-DLLVM_USE_INTEL_JITEVENTS=ON"
-      - "-DLLVM_ENABLE_Z3_SOLVER=OFF"
-      - "-DCMAKE_CXX_STANDARD=17"
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=OFF
+      - -DLLVM_CCACHE_BUILD=ON
+      - -DLLVM_TARGETS_TO_BUILD='X86'
+      - -DLLVM_BUILD_RUNTIME=OFF
+      - -DLLVM_BUILD_TOOLS=OFF
+      - -DLLVM_INCLUDE_DOCS=OFF
+      - -DLLVM_INCLUDE_EXAMPLES=OFF
+      - -DLLVM_INCLUDE_TESTS=OFF
+      - -DLLVM_INCLUDE_TOOLS=OFF
+      - -DLLVM_INCLUDE_UTILS=OFF
+      - -DLLVM_USE_INTEL_JITEVENTS=ON
+      - -DLLVM_ENABLE_Z3_SOLVER=OFF
+      - -DCMAKE_CXX_STANDARD=17
     cleanup:
-      - "*"
+      - '*'
     sources:
-      - type: "git"
-        url: "https://github.com/RPCS3/llvm-mirror.git"
-        branch: "master"
-        commit: "716bb292ba3b4e5c0ceff72fee911ed2b53232cf"
+      - type: git
+        url: https://github.com/RPCS3/llvm-mirror.git
+        branch: master
+        commit: 716bb292ba3b4e5c0ceff72fee911ed2b53232cf
 
-  - name: "rpcs3"
-    buildsystem: "cmake-ninja"
+  - name: rpcs3
+    buildsystem: cmake-ninja
     build-options:
-      cflags: &optflags "-fuse-linker-plugin -fuse-ld=gold"
-      cxxflags: *optflags
+      cflags: -fuse-linker-plugin -fuse-ld=gold
+      cxxflags: -fuse-linker-plugin -fuse-ld=gold
     config-opts:
-      - "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
-      - "-DBUILD_LLVM_SUBMODULE=OFF"
-      - "-DUSE_NATIVE_INSTRUCTIONS=OFF"
-      - "-DUSE_PRECOMPILED_HEADERS=OFF"
-      - "-DUSE_SYSTEM_FFMPEG=ON"
-      - "-DUSE_SYSTEM_LIBPNG=ON"
-      - "-DUSE_SYSTEM_ZLIB=ON"
-      - "-DUSE_SYSTEM_CURL=ON"
-      - "-DUSE_SYS_LIBUSB=ON"
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DBUILD_LLVM_SUBMODULE=OFF
+      - -DUSE_NATIVE_INSTRUCTIONS=OFF
+      - -DUSE_PRECOMPILED_HEADERS=OFF
+      - -DUSE_SYSTEM_FFMPEG=ON
+      - -DUSE_SYSTEM_LIBPNG=ON
+      - -DUSE_SYSTEM_ZLIB=ON
+      - -DUSE_SYSTEM_CURL=ON
+      - -DUSE_SYS_LIBUSB=ON
     post-install:
       - |
         set -eux;
@@ -108,7 +108,7 @@ modules:
         COMM_HASH="$(git rev-parse --short=8 HEAD)";
         sed -i 's|</component>|<content_rating type="oars-1.1"/><releases><release date="'$(git show -s --format=%cs)'" version="'"${COMM_TAG}"'-'"${COMM_COUNT}"'-'"${COMM_HASH}"'"/></releases></component>|' ${FLATPAK_DEST}/share/metainfo/rpcs3.appdata.xml;
     sources:
-      - type: "git"
-        url: "https://github.com/RPCS3/rpcs3.git"
-        branch: "master"
-        commit: "a47bda026bf61999d6cecda0297c9154f51b090d"
+      - type: git
+        url: https://github.com/RPCS3/rpcs3.git
+        branch: master
+        commit: 8be2a55ccc3b3763e2bae078ef55d8668bd79062
