@@ -40,10 +40,13 @@ modules:
       - "/lib/pkgconfig"
       - "/share"
     sources:
-      - type: "git"
-        url: "https://gitlab.freedesktop.org/libevdev/libevdev.git"
-        tag: "libevdev-1.10.0"
-        commit: "e6f3141eb626f703796bd537469221c8261489b5"
+      - type: "archive"
+        url: "https://www.freedesktop.org/software/libevdev/libevdev-1.11.0.tar.xz"
+        sha256: "63f4ea1489858a109080e0b40bd43e4e0903a1e12ea888d581db8c495747c2d0"
+        x-checker-data:
+          type: "anitya"
+          project-id: 20540
+          url-template: "https://www.freedesktop.org/software/libevdev/libevdev-$version.tar.xz"
 
   - name: "rpcs3-llvm"
     buildsystem: "cmake-ninja"
