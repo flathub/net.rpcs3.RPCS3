@@ -2,6 +2,8 @@ id: net.rpcs3.RPCS3
 runtime: org.kde.Platform
 runtime-version: '5.15'
 sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm11
 command: rpcs3
 rename-desktop-file: rpcs3.desktop
 rename-appdata-file: rpcs3.appdata.xml
@@ -24,6 +26,9 @@ add-extensions:
     autodelete: false
 cleanup-commands:
   - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
+build-options:
+  prepend-ld-library-path: /usr/lib/sdk/llvm11/lib
+  prepend-path: /usr/lib/sdk/llvm11/bin
 modules:
   - shared-modules/glu/glu-9.json
   - shared-modules/glew/glew.json
@@ -53,12 +58,12 @@ modules:
     builddir: true
     build-options:
       cxxflags: -msse -msse2 -mcx16
-      ldflags: -fuse-ld=lld
       env:
         AR: llvm-ar
         CC: clang
         CXX: clang++
         RANLIB: llvm-ranlib
+      ldflags: -fuse-ld=lld
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=OFF
@@ -85,8 +90,12 @@ modules:
   - name: rpcs3
     buildsystem: cmake-ninja
     build-options:
-      cflags: -fuse-linker-plugin -fuse-ld=gold
-      cxxflags: -fuse-linker-plugin -fuse-ld=gold
+      env:
+        AR: llvm-ar
+        CC: clang
+        CXX: clang++
+        RANLIB: llvm-ranlib
+      ldflags: -fuse-ld=lld
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DBUILD_LLVM_SUBMODULE=OFF
