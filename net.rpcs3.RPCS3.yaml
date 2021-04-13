@@ -9,14 +9,17 @@ rename-desktop-file: rpcs3.desktop
 rename-appdata-file: rpcs3.appdata.xml
 rename-icon: rpcs3
 finish-args:
+  - --device=all
+  - --filesystem=home:ro
+  - --filesystem=xdg-run/gvfs
+  - --filesystem=xdg-run/gvfsd
   - --share=ipc
-  - --socket=wayland
   - --socket=fallback-x11
   - --socket=pulseaudio
+  - --socket=wayland
   - --share=network
-  - --device=all
-  - --filesystem=host:ro
   - --talk-name=org.a11y.Bus
+  - --talk-name=org.gtk.vfs.*
 add-extensions:
   org.freedesktop.Platform.ffmpeg-full:
     directory: lib/ffmpeg
