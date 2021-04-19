@@ -3,7 +3,7 @@ runtime: org.kde.Platform
 runtime-version: '5.15'
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm11
+  - org.freedesktop.Sdk.Extension.llvm12
 command: rpcs3
 rename-desktop-file: rpcs3.desktop
 rename-appdata-file: rpcs3.appdata.xml
@@ -30,8 +30,8 @@ add-extensions:
 cleanup-commands:
   - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
 build-options:
-  prepend-ld-library-path: /usr/lib/sdk/llvm11/lib
-  prepend-path: /usr/lib/sdk/llvm11/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm12/lib
+  prepend-path: /usr/lib/sdk/llvm12/bin
 modules:
   - shared-modules/glu/glu-9.json
   - shared-modules/glew/glew.json
@@ -123,4 +123,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: b812ef2771bed4f6779fbb744a41f17cb9390a1d
+        commit: b2317543c818e964456d5dc1af3cc2215e83e1f2
