@@ -6,7 +6,7 @@ sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm12
 command: rpcs3
 rename-desktop-file: rpcs3.desktop
-rename-appdata-file: rpcs3.appdata.xml
+rename-appdata-file: rpcs3.metainfo.xml
 rename-icon: rpcs3
 finish-args:
   - --device=all
@@ -113,14 +113,14 @@ modules:
       - |
         set -eux;
 
-        sed -i 's|<id>RPCS3</id>|<id>net.rpcs3.RPCS3</id>|' ${FLATPAK_DEST}/share/metainfo/rpcs3.appdata.xml;
+        sed -i 's|<id>RPCS3</id>|<id>net.rpcs3.RPCS3</id>|' ${FLATPAK_DEST}/share/metainfo/rpcs3.metainfo.xml;
 
         COMM_TAG="$(grep 'version{.*}' rpcs3/rpcs3_version.cpp | awk -F[\{,] '{printf "%d.%d.%d", $2, $3, $4}')";
         COMM_COUNT="$(git rev-list --count HEAD)";
         COMM_HASH="$(git rev-parse --short=8 HEAD)";
-        sed -i 's|</component>|<content_rating type="oars-1.1"/><releases><release date="'$(git show -s --format=%cs)'" version="'"${COMM_TAG}"'-'"${COMM_COUNT}"'-'"${COMM_HASH}"'"/></releases></component>|' ${FLATPAK_DEST}/share/metainfo/rpcs3.appdata.xml;
+        sed -i 's|</component>|<content_rating type="oars-1.1"/><releases><release date="'$(git show -s --format=%cs)'" version="'"${COMM_TAG}"'-'"${COMM_COUNT}"'-'"${COMM_HASH}"'"/></releases></component>|' ${FLATPAK_DEST}/share/metainfo/rpcs3.metainfo.xml;
     sources:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 8217840accab93dd99f57357c0b08b61426445a8
+        commit: 0042f4e16eb8908ef3fb76fd36bf088ee46bdc05
