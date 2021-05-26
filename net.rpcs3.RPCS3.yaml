@@ -123,4 +123,6 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 309759b725bd23bcb30466d949a57f761969c3de
+        commit: 56f7359da4a7f9105f1b0ab624040ec803eec2d1
+      - type: patch
+        path: patches/rpcs3/fix-limits-include.patch
