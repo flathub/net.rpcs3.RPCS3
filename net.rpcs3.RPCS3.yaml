@@ -125,4 +125,4 @@ modules:
         branch: master
         commit: 56f7359da4a7f9105f1b0ab624040ec803eec2d1
       - type: patch
-        path: patches/rpcs3/fix-limits-include.patch
+        path: patches/rpcs3/10350.patch
