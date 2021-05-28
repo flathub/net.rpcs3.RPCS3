@@ -123,6 +123,6 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 56f7359da4a7f9105f1b0ab624040ec803eec2d1
+        commit: 9e62e98f798b534ccb89910eb47a3ba1c82caab5
       - type: patch
         path: patches/rpcs3/10350.patch
