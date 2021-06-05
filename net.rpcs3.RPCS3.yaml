@@ -80,7 +80,7 @@ modules:
         commit: a9a295fecf3fbd5a4f571f53b01f63202a3e2113
         x-checker-data:
           type: git
-          tag-pattern: ^v([\\d.]+)$
+          tag-pattern: ^v([\d.]+)$
 
   - name: pugixml
     buildsystem: cmake-ninja
