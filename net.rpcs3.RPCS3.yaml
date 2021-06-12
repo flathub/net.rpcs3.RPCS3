@@ -69,9 +69,9 @@ modules:
       - -DFLATBUFFERS_BUILD_FLATC=OFF
       - -DFLATBUFFERS_BUILD_SHAREDLIB=ON
     cleanup:
-      - /include/
-      - /lib/cmake/
-      - /lib/pkgconfig/
+      - /include
+      - /lib/cmake
+      - /lib/pkgconfig
       - /lib/*.a
     sources:
       - type: git
@@ -88,9 +88,9 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DBUILD_SHARED_LIBS=ON
     cleanup:
-      - /include/
-      - /lib/cmake/
-      - /lib/pkgconfig/
+      - /include
+      - /lib/cmake
+      - /lib/pkgconfig
     sources:
       - type: archive
         url: https://github.com/zeux/pugixml/releases/download/v1.11.4/pugixml-1.11.4.tar.gz
@@ -106,11 +106,11 @@ modules:
     make-install-args:
       - PREFIX=${FLATPAK_DEST}
     cleanup:
-      - /bin/
-      - /include/
-      - /lib/pkgconfig/
+      - /bin
+      - /include
+      - /lib/pkgconfig
       - /lib/*.a
-      - /share/
+      - /share
     sources:
       - type: archive
         url: https://github.com/Cyan4973/xxHash/archive/refs/tags/v0.8.0.tar.gz
