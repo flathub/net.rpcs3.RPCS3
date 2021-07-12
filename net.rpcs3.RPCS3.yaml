@@ -57,6 +57,26 @@ modules:
           stable-only: true
           url-template: https://www.freedesktop.org/software/libevdev/libevdev-$version.tar.xz
 
+  - name: FAudio
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DGSTREAMER=ON
+    cleanup:
+      - /include
+      - /lib/cmake
+      - /lib/pkgconfig
+    sources:
+      - type: archive
+        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.07.tar.gz
+        sha256: 30738397354d27b32e03aea648d5f8ba7ff6a63e02282b8f1533a44af2ba06b3
+        x-checker-data:
+          type: anitya
+          project-id: 20663
+          stable-only: true
+          url-template: https://github.com/FNA-XNA/FAudio/archive/refs/tags/$version.tar.gz
+
   - name: flatbuffers
     buildsystem: cmake-ninja
     build-options:
@@ -170,6 +190,7 @@ modules:
       - -DUSE_NATIVE_INSTRUCTIONS=OFF
       - -DUSE_PRECOMPILED_HEADERS=OFF
       - -DUSE_SYSTEM_CURL=ON
+      - -DUSE_SYSTEM_FAUDIO=ON
       - -DUSE_SYSTEM_FFMPEG=ON
       - -DUSE_SYSTEM_FLATBUFFERS=ON
       - -DUSE_SYSTEM_LIBPNG=ON
