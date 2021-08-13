@@ -1,0 +1,22 @@
+From ce26103a9733b78f853d790ccf333096bec580d0 Mon Sep 17 00:00:00 2001
+From: Lctrs <Lctrs@users.noreply.github.com>
+Date: Fri, 13 Aug 2021 11:38:03 +0200
+Subject: [PATCH] support building with system faudio 21.08+
+
+---
+ 3rdparty/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/3rdparty/CMakeLists.txt b/3rdparty/CMakeLists.txt
+index 42eaff86ea31..45c07b628f3e 100644
+--- a/3rdparty/CMakeLists.txt
++++ b/3rdparty/CMakeLists.txt
+@@ -234,7 +234,7 @@ if(USE_FAUDIO)
+ 	else()
+ 		if (USE_SYSTEM_FAUDIO)
+ 			message(STATUS "RPCS3: Using system FAudio")
+-			find_package(FAudio REQUIRED CONFIGS FAudio-config.cmake)
++			find_package(FAudio REQUIRED CONFIGS FAudioConfig.cmake FAudio-config.cmake)
+ 			add_library(3rdparty_FAudio INTERFACE)
+ 			target_link_libraries(3rdparty_FAudio INTERFACE FAudio)
+ 			target_compile_definitions(3rdparty_FAudio INTERFACE -DHAVE_FAUDIO)

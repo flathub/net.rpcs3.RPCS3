@@ -208,3 +208,5 @@ modules:
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
         commit: 063df64108e53de55531e718d770c6ace619e9df
+      - type: patch
+        path: patches/rpcs3/faudio-21.08.patch
