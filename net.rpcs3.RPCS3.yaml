@@ -177,6 +177,7 @@ modules:
 
   - name: rpcs3
     buildsystem: cmake-ninja
+    builddir: true
     build-options:
       env:
         AR: llvm-ar
