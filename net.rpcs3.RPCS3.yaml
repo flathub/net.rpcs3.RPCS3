@@ -177,6 +177,7 @@ modules:
 
   - name: rpcs3
     buildsystem: cmake-ninja
+    builddir: true
     build-options:
       env:
         AR: llvm-ar
@@ -212,4 +213,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: f44e50b9cd8689067dd309599d7ee90a780cfd56
+        commit: ee6e4c493d782fff5f92cbdad6c14f904f02012a
