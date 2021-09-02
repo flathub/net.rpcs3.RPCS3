@@ -69,8 +69,8 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.08.tar.gz
-        sha256: 42a3a295da44721c63f06fcbf5edf8077a42fdb78313b9e1c065afad12df8063
+        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.09.tar.gz
+        sha256: 8888f075594c9c0e9a83fda9b4556a5d290fa02ed0ba7cd35ecfeb7c4d7968ba
         x-checker-data:
           type: anitya
           project-id: 20663
