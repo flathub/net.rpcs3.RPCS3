@@ -1,6 +1,6 @@
 id: net.rpcs3.RPCS3
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm12
@@ -213,4 +213,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 7167fbf545be3e1f7fa8bac65a2a3f9dfd04b6a7
+        commit: fff0c96bf38d1ada075e524c4753a7f263c06449
