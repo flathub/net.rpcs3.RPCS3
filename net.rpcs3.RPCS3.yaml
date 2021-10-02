@@ -69,8 +69,8 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.09.tar.gz
-        sha256: 8888f075594c9c0e9a83fda9b4556a5d290fa02ed0ba7cd35ecfeb7c4d7968ba
+        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.10.tar.gz
+        sha256: eca3e2cc148f9b25e8ce61153f3f552a385cdaa903f691af0a53932cc10cfb39
         x-checker-data:
           type: anitya
           project-id: 20663
@@ -213,4 +213,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 02e1c4981878c342aab1f793a2cb87793ce26bef
+        commit: c765de81d4614f41a9c6eed425471d227e06d663
