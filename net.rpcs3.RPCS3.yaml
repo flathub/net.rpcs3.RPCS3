@@ -20,6 +20,8 @@ finish-args:
   - --share=network
   - --talk-name=org.a11y.Bus
   - --talk-name=org.gtk.vfs.*
+  - --talk-name=org.freedesktop.ScreenSaver
+  - --talk-name=org.mate.ScreenSaver
 add-extensions:
   org.freedesktop.Platform.ffmpeg-full:
     directory: lib/ffmpeg
