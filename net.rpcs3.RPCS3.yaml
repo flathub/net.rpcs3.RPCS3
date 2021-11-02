@@ -175,7 +175,7 @@ modules:
       - type: git
         url: https://github.com/RPCS3/llvm-mirror.git
         branch: master
-        commit: 5836324d6443a62ed09b84c125029e98324978c3
+        commit: 05332b78c79426660951df3ade9f2ed7812955ff
 
   - name: rpcs3
     buildsystem: cmake-ninja
