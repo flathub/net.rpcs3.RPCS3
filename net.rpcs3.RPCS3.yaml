@@ -71,8 +71,8 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.10.tar.gz
-        sha256: eca3e2cc148f9b25e8ce61153f3f552a385cdaa903f691af0a53932cc10cfb39
+        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.11.tar.gz
+        sha256: 1389100ca132e06455ad7e4e765a045d9821c234f6e388bef6a0c8d610ce36d1
         x-checker-data:
           type: anitya
           project-id: 20663
@@ -175,7 +175,7 @@ modules:
       - type: git
         url: https://github.com/RPCS3/llvm-mirror.git
         branch: master
-        commit: 5836324d6443a62ed09b84c125029e98324978c3
+        commit: 18f153b33bef2a4e29a0478ddd374b1f19316a46
 
   - name: rpcs3
     buildsystem: cmake-ninja
@@ -215,4 +215,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 37383f4217e1c510a543e100d0ca495800b3361a
+        commit: 69f321a47127d00697840cd795fd39020f3b7a68
