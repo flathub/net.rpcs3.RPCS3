@@ -178,6 +178,14 @@ modules:
         url: https://github.com/RPCS3/llvm-mirror.git
         branch: master
         commit: 18f153b33bef2a4e29a0478ddd374b1f19316a46
+      - type: git
+        url: https://github.com/intel/ittapi.git
+        tag: v3.21.2
+        commit: eb8d2874eb2421c404af715b198a70b5cf8ec18d
+        dest: ittapi/ittapi
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
 
   - name: rpcs3
     buildsystem: cmake-ninja
