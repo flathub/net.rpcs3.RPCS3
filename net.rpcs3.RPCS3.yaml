@@ -178,7 +178,7 @@ modules:
       - type: git
         url: https://github.com/RPCS3/llvm-mirror.git
         branch: master
-        commit: 1cc7bdd5011d2f93c722a9f1a542121c56b7aa93
+        commit: 318b8fe3746615f914522d4e177c537ce80d1d08
       - type: git
         url: https://github.com/intel/ittapi.git
         dest: ittapi/ittapi
@@ -222,4 +222,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: de2be9063655b5a92a9acbb19019320c62a434ca
+        commit: 3d859a7493dd21ecaf793bfe1da28d87469a373f
