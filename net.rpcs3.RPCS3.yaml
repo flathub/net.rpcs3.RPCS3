@@ -78,8 +78,6 @@ modules:
           project-id: 20663
           stable-only: true
           url-template: https://github.com/FNA-XNA/FAudio/archive/refs/tags/$version.tar.gz
-      - type: patch
-        path: patches/faudio/fix-faudio.patch
 
   - name: flatbuffers
     buildsystem: cmake-ninja
