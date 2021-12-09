@@ -98,8 +98,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/google/flatbuffers.git
-        tag: v2.0.0
-        commit: a9a295fecf3fbd5a4f571f53b01f63202a3e2113
+        tag: v2.0.5
+        commit: d0cede9c90c5257537c293517a21376408b549fa
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
