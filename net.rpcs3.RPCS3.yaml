@@ -167,6 +167,7 @@ modules:
       - -DLLVM_INCLUDE_TOOLS=OFF
       - -DLLVM_INCLUDE_UTILS=OFF
       - -DLLVM_USE_INTEL_JITEVENTS=ON
+      - -DLLVM_USE_PERF=ON
       - -DLLVM_ENABLE_Z3_SOLVER=OFF
       - -DCMAKE_CXX_STANDARD=17
       - -DITTAPI_SOURCE_DIR=/run/build/rpcs3-llvm/ittapi
@@ -176,7 +177,7 @@ modules:
       - type: git
         url: https://github.com/RPCS3/llvm-mirror.git
         branch: master
-        commit: 318b8fe3746615f914522d4e177c537ce80d1d08
+        commit: 1c0ca194dc501ffb1674868babf8bd52658a0734
       - type: git
         url: https://github.com/intel/ittapi.git
         dest: ittapi/ittapi
@@ -220,4 +221,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: a0040e6fb1236be0f9bf2911e4f887dccb15a80a
+        commit: 900d7df40f6e0c4b1b5b7d23c200e86c65d18643
