@@ -71,8 +71,8 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/21.12.tar.gz
-        sha256: c69d1b7098c018a787311d6f2bfdbc3782e88407f219ea53213f052284f9cb14
+        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/22.01.tar.gz
+        sha256: e6b7c0ced90f5a3e1363f95ad990a99afee6784a35320719df48af45d1f07c7d
         x-checker-data:
           type: anitya
           project-id: 20663
@@ -177,7 +177,7 @@ modules:
       - type: git
         url: https://github.com/RPCS3/llvm-mirror.git
         branch: master
-        commit: 1c0ca194dc501ffb1674868babf8bd52658a0734
+        commit: 509d31ad89676522f7121b3bb8688f7d29b7ee60
       - type: git
         url: https://github.com/intel/ittapi.git
         dest: ittapi/ittapi
@@ -221,4 +221,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: cb2748ae089e877fd0867ef5ab95ae7b6f2dca6c
+        commit: 7c47b0029cbfc281da24d48304e035b3cfb75902
