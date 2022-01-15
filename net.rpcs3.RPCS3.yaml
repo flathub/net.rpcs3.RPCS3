@@ -221,4 +221,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 83026fd26356a6c4d2ec6b360a706cbb3632b2bb
+        commit: 580bd2b25eba04f9f30d3ed1df3b3f31e0387b02
