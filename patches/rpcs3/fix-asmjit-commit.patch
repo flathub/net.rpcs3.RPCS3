@@ -1,0 +1,7 @@
+diff --git a/3rdparty/asmjit/asmjit b/3rdparty/asmjit/asmjit
+index fc2a5d82f..f25874d2d 160000
+--- a/3rdparty/asmjit/asmjit
++++ b/3rdparty/asmjit/asmjit
+@@ -1 +1 @@
+-Subproject commit fc2a5d82f7434d7d03161275a764c051f970f41c
++Subproject commit f25874d2d9028e52090eaddd6f6aff42e1a1f1f0
