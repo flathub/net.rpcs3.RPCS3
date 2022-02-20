@@ -18,7 +18,6 @@ finish-args:
   - --socket=pulseaudio
   - --socket=wayland
   - --share=network
-  - --talk-name=org.a11y.Bus
   - --talk-name=org.gtk.vfs.*
   - --talk-name=org.freedesktop.ScreenSaver
   - --talk-name=org.mate.ScreenSaver
