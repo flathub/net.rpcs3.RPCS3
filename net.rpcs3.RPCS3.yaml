@@ -70,8 +70,8 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/22.01.tar.gz
-        sha256: e6b7c0ced90f5a3e1363f95ad990a99afee6784a35320719df48af45d1f07c7d
+        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/22.02.tar.gz
+        sha256: fc6248fd471c59dc9dc1de706a186064511de666c78a7358861d275c084df9ed
         x-checker-data:
           type: anitya
           project-id: 20663
@@ -97,8 +97,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/google/flatbuffers.git
-        tag: v2.0.5
-        commit: d0cede9c90c5257537c293517a21376408b549fa
+        tag: v2.0.6
+        commit: 615616cb5549a34bdf288c04bc1b94bd7a65c396
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
