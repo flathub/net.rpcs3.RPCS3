@@ -70,8 +70,8 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/22.01.tar.gz
-        sha256: e6b7c0ced90f5a3e1363f95ad990a99afee6784a35320719df48af45d1f07c7d
+        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/22.03.tar.gz
+        sha256: 91ea309417f6846fc097e06a0b4fb604bf4bdff67455fabc4820cf1dbe0e301e
         x-checker-data:
           type: anitya
           project-id: 20663
@@ -97,8 +97,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/google/flatbuffers.git
-        tag: v2.0.5
-        commit: d0cede9c90c5257537c293517a21376408b549fa
+        tag: v2.0.6
+        commit: 615616cb5549a34bdf288c04bc1b94bd7a65c396
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -114,8 +114,8 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: https://github.com/zeux/pugixml/releases/download/v1.11.4/pugixml-1.11.4.tar.gz
-        sha256: 8ddf57b65fb860416979a3f0640c2ad45ddddbbafa82508ef0a0af3ce7061716
+        url: https://github.com/zeux/pugixml/releases/download/v1.12.1/pugixml-1.12.1.tar.gz
+        sha256: dcf671a919cc4051210f08ffd3edf9e4247f79ad583c61577a13ee93af33afc7
         x-checker-data:
           type: anitya
           project-id: 3728
@@ -220,4 +220,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 83026fd26356a6c4d2ec6b360a706cbb3632b2bb
+        commit: 78b8bd80e43b6ffa5ee169e7d84972fe03d8ee9b
