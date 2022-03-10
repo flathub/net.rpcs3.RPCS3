@@ -63,7 +63,6 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DGSTREAMER=ON
     cleanup:
       - /include
       - /lib/cmake
