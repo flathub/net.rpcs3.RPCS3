@@ -3,7 +3,7 @@ runtime: org.kde.Platform
 runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm12
+  - org.freedesktop.Sdk.Extension.llvm13
 command: rpcs3
 rename-desktop-file: rpcs3.desktop
 rename-appdata-file: rpcs3.metainfo.xml
@@ -31,8 +31,8 @@ add-extensions:
 cleanup-commands:
   - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
 build-options:
-  prepend-ld-library-path: /usr/lib/sdk/llvm12/lib
-  prepend-path: /usr/lib/sdk/llvm12/bin
+  prepend-ld-library-path: /usr/lib/sdk/llvm13/lib
+  prepend-path: /usr/lib/sdk/llvm13/bin
 modules:
   - shared-modules/glu/glu-9.json
   - shared-modules/glew/glew.json
