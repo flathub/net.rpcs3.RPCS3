@@ -77,32 +77,6 @@ modules:
           stable-only: true
           url-template: https://github.com/FNA-XNA/FAudio/archive/refs/tags/$version.tar.gz
 
-  - name: flatbuffers
-    buildsystem: cmake-ninja
-    build-options:
-      env:
-        CC: clang
-        CXX: clang++
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DFLATBUFFERS_BUILD_TESTS=OFF
-      - -DFLATBUFFERS_BUILD_FLATC=OFF
-      - -DFLATBUFFERS_BUILD_SHAREDLIB=ON
-      - -Wno-dev
-    cleanup:
-      - /include
-      - /lib/cmake
-      - /lib/pkgconfig
-      - /lib/*.a
-    sources:
-      - type: git
-        url: https://github.com/google/flatbuffers.git
-        tag: v2.0.6
-        commit: 615616cb5549a34bdf288c04bc1b94bd7a65c396
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
-
   - name: pugixml
     buildsystem: cmake-ninja
     config-opts:
@@ -201,7 +175,6 @@ modules:
       - -DUSE_SYSTEM_CURL=ON
       - -DUSE_SYSTEM_FAUDIO=ON
       - -DUSE_SYSTEM_FFMPEG=ON
-      - -DUSE_SYSTEM_FLATBUFFERS=ON
       - -DUSE_SYSTEM_LIBPNG=ON
       - -DUSE_SYSTEM_LIBUSB=ON
       - -DUSE_SYSTEM_PUGIXML=ON
