@@ -30,9 +30,6 @@ add-extensions:
     autodelete: false
 cleanup-commands:
   - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
-build-options:
-  prepend-ld-library-path: /usr/lib/sdk/llvm13/lib
-  prepend-path: /usr/lib/sdk/llvm13/bin
 modules:
   - shared-modules/glu/glu-9.json
   - shared-modules/glew/glew.json
@@ -127,6 +124,8 @@ modules:
         CXX: clang++
         RANLIB: llvm-ranlib
       ldflags: -fuse-ld=lld
+      prepend-ld-library-path: /usr/lib/sdk/llvm13/lib
+      prepend-path: /usr/lib/sdk/llvm13/bin
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=OFF
@@ -161,6 +160,8 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     build-options:
+      append-ld-library-path: /usr/lib/sdk/llvm13/lib
+      append-path: /usr/lib/sdk/llvm13/bin
       env:
         AR: llvm-ar
         CC: clang
