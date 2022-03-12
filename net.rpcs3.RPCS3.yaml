@@ -3,7 +3,7 @@ runtime: org.kde.Platform
 runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm12
+  - org.freedesktop.Sdk.Extension.llvm13
 command: rpcs3
 rename-desktop-file: rpcs3.desktop
 rename-appdata-file: rpcs3.metainfo.xml
@@ -30,9 +30,6 @@ add-extensions:
     autodelete: false
 cleanup-commands:
   - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
-build-options:
-  prepend-ld-library-path: /usr/lib/sdk/llvm12/lib
-  prepend-path: /usr/lib/sdk/llvm12/bin
 modules:
   - shared-modules/glu/glu-9.json
   - shared-modules/glew/glew.json
@@ -63,45 +60,19 @@ modules:
     builddir: true
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DGSTREAMER=ON
     cleanup:
       - /include
       - /lib/cmake
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/22.01.tar.gz
-        sha256: e6b7c0ced90f5a3e1363f95ad990a99afee6784a35320719df48af45d1f07c7d
+        url: https://github.com/FNA-XNA/FAudio/archive/refs/tags/22.03.tar.gz
+        sha256: 91ea309417f6846fc097e06a0b4fb604bf4bdff67455fabc4820cf1dbe0e301e
         x-checker-data:
           type: anitya
           project-id: 20663
           stable-only: true
           url-template: https://github.com/FNA-XNA/FAudio/archive/refs/tags/$version.tar.gz
-
-  - name: flatbuffers
-    buildsystem: cmake-ninja
-    build-options:
-      env:
-        CC: clang
-        CXX: clang++
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DFLATBUFFERS_BUILD_TESTS=OFF
-      - -DFLATBUFFERS_BUILD_FLATC=OFF
-      - -DFLATBUFFERS_BUILD_SHAREDLIB=ON
-    cleanup:
-      - /include
-      - /lib/cmake
-      - /lib/pkgconfig
-      - /lib/*.a
-    sources:
-      - type: git
-        url: https://github.com/google/flatbuffers.git
-        tag: v2.0.5
-        commit: d0cede9c90c5257537c293517a21376408b549fa
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
 
   - name: pugixml
     buildsystem: cmake-ninja
@@ -114,8 +85,8 @@ modules:
       - /lib/pkgconfig
     sources:
       - type: archive
-        url: https://github.com/zeux/pugixml/releases/download/v1.11.4/pugixml-1.11.4.tar.gz
-        sha256: 8ddf57b65fb860416979a3f0640c2ad45ddddbbafa82508ef0a0af3ce7061716
+        url: https://github.com/zeux/pugixml/releases/download/v1.12.1/pugixml-1.12.1.tar.gz
+        sha256: dcf671a919cc4051210f08ffd3edf9e4247f79ad583c61577a13ee93af33afc7
         x-checker-data:
           type: anitya
           project-id: 3728
@@ -153,6 +124,8 @@ modules:
         CXX: clang++
         RANLIB: llvm-ranlib
       ldflags: -fuse-ld=lld
+      prepend-ld-library-path: /usr/lib/sdk/llvm13/lib
+      prepend-path: /usr/lib/sdk/llvm13/bin
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_SHARED_LIBS=OFF
@@ -170,6 +143,7 @@ modules:
       - -DLLVM_ENABLE_Z3_SOLVER=OFF
       - -DCMAKE_CXX_STANDARD=17
       - -DITTAPI_SOURCE_DIR=/run/build/rpcs3-llvm/ittapi
+      - -Wno-dev
     cleanup:
       - '*'
     sources:
@@ -186,6 +160,8 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     build-options:
+      append-ld-library-path: /usr/lib/sdk/llvm13/lib
+      append-path: /usr/lib/sdk/llvm13/bin
       env:
         AR: llvm-ar
         CC: clang
@@ -200,12 +176,12 @@ modules:
       - -DUSE_SYSTEM_CURL=ON
       - -DUSE_SYSTEM_FAUDIO=ON
       - -DUSE_SYSTEM_FFMPEG=ON
-      - -DUSE_SYSTEM_FLATBUFFERS=ON
       - -DUSE_SYSTEM_LIBPNG=ON
       - -DUSE_SYSTEM_LIBUSB=ON
       - -DUSE_SYSTEM_PUGIXML=ON
       - -DUSE_SYSTEM_XXHASH=ON
       - -DUSE_SYSTEM_ZLIB=ON
+      - -Wno-dev
     post-install:
       - |
         set -eux;
@@ -220,4 +196,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 83026fd26356a6c4d2ec6b360a706cbb3632b2bb
+        commit: 78b8bd80e43b6ffa5ee169e7d84972fe03d8ee9b
