@@ -58,7 +58,10 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     build-options:
-      cxxflags: -msse -msse2 -mcx16
+      cflags: &optflags -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer
+      cflags-override: true
+      cxxflags: -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -msse -msse2 -mcx16
+      cxxflags-override: true
       env:
         AR: llvm-ar
         CC: clang
@@ -103,6 +106,10 @@ modules:
     build-options:
       append-ld-library-path: /usr/lib/sdk/llvm13/lib
       append-path: /usr/lib/sdk/llvm13/bin
+      cflags: *optflags
+      cflags-override: true
+      cxxflags: *optflags
+      cxxflags-override: true
       env:
         AR: llvm-ar
         CC: clang
