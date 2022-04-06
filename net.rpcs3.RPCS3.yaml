@@ -11,14 +11,13 @@ rename-icon: rpcs3
 finish-args:
   - --device=all
   - --filesystem=home:ro
-  - --filesystem=xdg-run/gvfs
-  - --filesystem=xdg-run/gvfsd
+  - --filesystem=/media
+  - --filesystem=/run/media
   - --share=ipc
   - --socket=fallback-x11
   - --socket=pulseaudio
   - --socket=wayland
   - --share=network
-  - --talk-name=org.gtk.vfs.*
   - --talk-name=org.freedesktop.ScreenSaver
   - --talk-name=org.mate.ScreenSaver
 add-extensions:
