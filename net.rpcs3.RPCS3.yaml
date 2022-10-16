@@ -97,7 +97,7 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: cf86b6c1072da4491e7a1e9f3f325890a83f6721
+        commit: fafae1cbb524b17e431533236561cef8def9190f
       - type: git
         url: https://github.com/intel/ittapi.git
         branch: master
