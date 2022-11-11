@@ -101,6 +101,6 @@ modules:
       - type: git
         url: https://github.com/intel/ittapi.git
         branch: master
-        commit: 90e9af0506fd5e1b6d9ce087bec46234c889e6d1
+        commit: f04184c8035f1bfaa211cfc7d631f286d32f270b
         dest: ittapi/ittapi
         disable-shallow-clone: true
