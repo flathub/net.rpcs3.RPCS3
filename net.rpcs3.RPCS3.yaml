@@ -95,11 +95,11 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 709305df0e401347d21b88871e8ee917a137e753
+        commit: c3c2bb7ad81f6b38fe072683d430d64d163c521e
       - type: git
         url: https://github.com/intel/ittapi.git
         branch: master
-        commit: 010b34e62ba2b725f63ec38c18af2a0e8702a68f
+        commit: bdd05eef5bab76bd215a58f0a072dfe4a47e0a7d
         dest: ittapi/ittapi
         disable-shallow-clone: true
       # remove git-lfs hook
