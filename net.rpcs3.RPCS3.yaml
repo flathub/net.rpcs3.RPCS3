@@ -99,7 +99,7 @@ modules:
       - type: git
         url: https://github.com/intel/ittapi.git
         branch: master
-        commit: bdd05eef5bab76bd215a58f0a072dfe4a47e0a7d
+        commit: 4112c9c63ed98841010503430d139f4a1e18d2bb
         dest: ittapi/ittapi
         disable-shallow-clone: true
       # remove git-lfs hook
