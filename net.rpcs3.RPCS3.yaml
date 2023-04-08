@@ -74,7 +74,7 @@ modules:
       ldflags: -fuse-ld=lld
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DBUILD_LLVM_SUBMODULE=ON
+      - -DBUILD_LLVM=ON
       - -DUSE_NATIVE_INSTRUCTIONS=OFF
       - -DUSE_PRECOMPILED_HEADERS=OFF
       - -DUSE_SYSTEM_CURL=ON
