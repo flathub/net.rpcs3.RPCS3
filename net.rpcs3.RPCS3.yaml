@@ -75,6 +75,7 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DBUILD_LLVM=ON
+      - -DSTATIC_LINK_LLVM=ON
       - -DUSE_NATIVE_INSTRUCTIONS=OFF
       - -DUSE_PRECOMPILED_HEADERS=OFF
       - -DUSE_SYSTEM_CURL=ON
@@ -95,7 +96,7 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 7bec3b30b75146e9a6da8c03353b7719981136e2
+        commit: 9989fb4bbc8cc0e72795412a854c22b5face1cd8
       - type: git
         url: https://github.com/intel/ittapi.git
         branch: master
