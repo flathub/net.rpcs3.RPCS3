@@ -75,6 +75,7 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DBUILD_LLVM=ON
+      - -DSTATIC_LINK_LLVM=ON
       - -DUSE_NATIVE_INSTRUCTIONS=OFF
       - -DUSE_PRECOMPILED_HEADERS=OFF
       - -DUSE_SYSTEM_CURL=ON
