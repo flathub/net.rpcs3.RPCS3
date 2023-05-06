@@ -74,15 +74,13 @@ modules:
       ldflags: -fuse-ld=lld
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DBUILD_LLVM=ON
-      - -DSTATIC_LINK_LLVM=ON
+      - -DBUILD_LLVM=OFF
       - -DUSE_NATIVE_INSTRUCTIONS=OFF
       - -DUSE_PRECOMPILED_HEADERS=OFF
       - -DUSE_SYSTEM_CURL=ON
       - -DUSE_SYSTEM_FFMPEG=ON
       - -DUSE_SYSTEM_LIBPNG=ON
       - -DUSE_SYSTEM_ZLIB=ON
-      - -DITTAPI_SOURCE_DIR=/run/build/rpcs3/ittapi
       - -Wno-dev
     post-install:
       - |-
@@ -97,14 +95,3 @@ modules:
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
         commit: 195de818b686c598ee83cf7bac687f9a963074b6
-      - type: git
-        url: https://github.com/intel/ittapi.git
-        branch: master
-        commit: 4a3762fbc517475bfb0586efc513e51c164108c9
-        dest: ittapi/ittapi
-        disable-shallow-clone: true
-      # remove git-lfs hook
-      - type: inline
-        dest: ittapi/ittapi/.git/hooks
-        dest-filename: post-checkout
-        contents:
