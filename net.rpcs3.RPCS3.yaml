@@ -3,7 +3,7 @@ runtime: org.kde.Platform
 runtime-version: 5.15-22.08
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm15
+  - org.freedesktop.Sdk.Extension.llvm16
 command: rpcs3
 rename-desktop-file: rpcs3.desktop
 rename-appdata-file: rpcs3.metainfo.xml
@@ -58,8 +58,8 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     build-options:
-      append-ld-library-path: /usr/lib/sdk/llvm15/lib
-      append-path: /usr/lib/sdk/llvm15/bin
+      append-ld-library-path: /usr/lib/sdk/llvm16/lib
+      append-path: /usr/lib/sdk/llvm16/bin
       cflags: &optflags -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong
         -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection
         -fcf-protection -fno-omit-frame-pointer
@@ -74,15 +74,13 @@ modules:
       ldflags: -fuse-ld=lld
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DBUILD_LLVM=ON
-      - -DSTATIC_LINK_LLVM=ON
+      - -DBUILD_LLVM=OFF
       - -DUSE_NATIVE_INSTRUCTIONS=OFF
       - -DUSE_PRECOMPILED_HEADERS=OFF
       - -DUSE_SYSTEM_CURL=ON
       - -DUSE_SYSTEM_FFMPEG=ON
       - -DUSE_SYSTEM_LIBPNG=ON
       - -DUSE_SYSTEM_ZLIB=ON
-      - -DITTAPI_SOURCE_DIR=/run/build/rpcs3/ittapi
       - -Wno-dev
     post-install:
       - |-
@@ -96,15 +94,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 195de818b686c598ee83cf7bac687f9a963074b6
-      - type: git
-        url: https://github.com/intel/ittapi.git
-        branch: master
-        commit: 4a3762fbc517475bfb0586efc513e51c164108c9
-        dest: ittapi/ittapi
-        disable-shallow-clone: true
-      # remove git-lfs hook
-      - type: inline
-        dest: ittapi/ittapi/.git/hooks
-        dest-filename: post-checkout
-        contents:
+        commit: ead8e5e0c35c817da21fb7710adf912af42b9b96
