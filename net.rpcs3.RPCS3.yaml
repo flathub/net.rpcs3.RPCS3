@@ -77,9 +77,11 @@ modules:
       - -DBUILD_LLVM=OFF
       - -DUSE_NATIVE_INSTRUCTIONS=OFF
       - -DUSE_PRECOMPILED_HEADERS=OFF
+      - -DUSE_SDL=ON
       - -DUSE_SYSTEM_CURL=ON
       - -DUSE_SYSTEM_FFMPEG=ON
       - -DUSE_SYSTEM_LIBPNG=ON
+      - -DUSE_SYSTEM_SDL=ON
       - -DUSE_SYSTEM_ZLIB=ON
       - -Wno-dev
     post-install:
