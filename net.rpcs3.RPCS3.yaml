@@ -13,7 +13,6 @@ finish-args:
   - --filesystem=home:ro
   - --filesystem=/media
   - --filesystem=/run/media
-  - --filesystem=xdg-data/applications/RPCS3
   - --share=ipc
   - --socket=fallback-x11
   - --socket=pulseaudio
