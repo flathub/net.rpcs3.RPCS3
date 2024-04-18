@@ -3,7 +3,7 @@ runtime: org.kde.Platform
 runtime-version: '6.6'
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm17
+  - org.freedesktop.Sdk.Extension.llvm18
 command: rpcs3
 rename-desktop-file: rpcs3.desktop
 rename-appdata-file: rpcs3.metainfo.xml
@@ -49,8 +49,8 @@ modules:
     buildsystem: cmake-ninja
     builddir: true
     build-options:
-      append-ld-library-path: /usr/lib/sdk/llvm17/lib
-      append-path: /usr/lib/sdk/llvm17/bin
+      append-ld-library-path: /usr/lib/sdk/llvm18/lib
+      append-path: /usr/lib/sdk/llvm18/bin
       cflags: &optflags -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong
         -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection
         -fcf-protection -fno-omit-frame-pointer
@@ -76,7 +76,7 @@ modules:
       - -DUSE_SYSTEM_ZLIB=ON
       - -Wno-dev
     post-install:
-      - cp /usr/lib/sdk/llvm17/lib/libLLVM-17.so /app/lib/
+      - cp /usr/lib/sdk/llvm17/lib/libLLVM-18.so /app/lib/
       - |-
         set -eux
 
