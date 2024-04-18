@@ -76,7 +76,7 @@ modules:
       - -DUSE_SYSTEM_ZLIB=ON
       - -Wno-dev
     post-install:
-      - cp /usr/lib/sdk/llvm17/lib/libLLVM-18.so /app/lib/
+      - cp /usr/lib/sdk/llvm18/lib/libLLVM-18.so /app/lib/
       - |-
         set -eux
 
