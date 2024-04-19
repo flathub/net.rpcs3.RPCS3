@@ -76,7 +76,7 @@ modules:
       - -DUSE_SYSTEM_ZLIB=ON
       - -Wno-dev
     post-install:
-      - cp /usr/lib/sdk/llvm18/lib/libLLVM-18.so /app/lib/
+      - cp /usr/lib/sdk/llvm18/lib/libLLVM.so.18.1 /app/lib/
       - |-
         set -eux
 
@@ -88,4 +88,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 1444981bdc732a4b98d59021e4c252a70a138014
+        commit: 7485ec2223225d6fff66a44437885036b1c49884
