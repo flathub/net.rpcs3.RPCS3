@@ -89,3 +89,8 @@ modules:
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
         commit: 4832267307382f597de711d4e79c0b355d118c09
+      - type: archive
+        url: https://github.com/RPCS3/ffmpeg-core/releases/download/ec6367d/ffmpeg-linux-x64.zip
+        sha256: 6e59ac7d6929ac3027d5ca800d4d9ea4fb16d3f1b2e865af70c6e55db216ac5b
+        dest: 3rdparty
+        dest-filename: ffmpeg.zip
