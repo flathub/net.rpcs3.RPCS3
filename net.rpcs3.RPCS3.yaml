@@ -76,6 +76,7 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DBUILD_LLVM=OFF
+      - -DOpenGL_GL_PREFERENCE=LEGACY
       - -DUSE_NATIVE_INSTRUCTIONS=OFF
       - -DUSE_PRECOMPILED_HEADERS=OFF
       - -DUSE_SDL=ON
@@ -98,4 +99,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 1b87e186c45a21de83e9fdc859af3e0c92ae8509
+        commit: efc9ae98ed5ddf488b555fd84b318762e68483f6
