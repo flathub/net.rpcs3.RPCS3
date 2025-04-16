@@ -1,9 +1,9 @@
 id: net.rpcs3.RPCS3
 runtime: org.kde.Platform
-runtime-version: '6.7'
+runtime-version: '6.9'
 sdk: org.kde.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.llvm18
+  - org.freedesktop.Sdk.Extension.llvm20
 command: rpcs3
 rename-desktop-file: rpcs3.desktop
 rename-appdata-file: rpcs3.metainfo.xml
@@ -47,20 +47,45 @@ modules:
       - /share
     sources:
       - type: archive
-        url: https://www.freedesktop.org/software/libevdev/libevdev-1.13.3.tar.xz
-        sha256: abf1aace86208eebdd5d3550ffded4c8d73bb405b796d51c389c9d0604cbcfbf
+        url: https://www.freedesktop.org/software/libevdev/libevdev-1.13.4.tar.xz
+        sha256: f00ab8d42ad8b905296fab67e13b871f1a424839331516642100f82ad88127cd
         x-checker-data:
           type: anitya
           project-id: 20540
           stable-only: true
           url-template: https://www.freedesktop.org/software/libevdev/libevdev-$version.tar.xz
 
+  - name: sdl3
+    buildsystem: cmake-ninja
+    builddir: true
+    cleanup:
+      - /include
+      - /lib/*.la
+      - /lib/*.a
+      - /lib/cmake
+      - /lib/pkgconfig
+      - /share/aclocal
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_INSTALL_LIBDIR:PATH=lib
+    sources:
+        - type: archive
+          url: https://github.com/libsdl-org/SDL/releases/download/release-3.2.10/SDL3-3.2.10.tar.gz
+          sha256: f87be7b4dec66db4098e9c167b2aa34e2ca10aeb5443bdde95ae03185ed513e0
+          x-checker-data:
+            type: anitya
+            project-id: 375746
+            stable-only: true
+            versions:
+                '<': "4.0.0"
+            url-template: https://github.com/libsdl-org/SDL/releases/download/release-${version}/SDL3-${version}.tar.gz
+
   - name: rpcs3
     buildsystem: cmake-ninja
     builddir: true
     build-options:
-      append-ld-library-path: /usr/lib/sdk/llvm18/lib
-      append-path: /usr/lib/sdk/llvm18/bin
+      append-ld-library-path: /usr/lib/sdk/llvm20/lib
+      append-path: /usr/lib/sdk/llvm20/bin
       cflags: &optflags -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong
         -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection
         -fcf-protection -fno-omit-frame-pointer
@@ -86,7 +111,7 @@ modules:
       - -DUSE_SYSTEM_ZLIB=ON
       - -Wno-dev
     post-install:
-      - cp /usr/lib/sdk/llvm18/lib/libLLVM.so.18.1 /app/lib/
+      - cp /usr/lib/sdk/llvm20/lib/libLLVM.so.20.1 /app/lib/
       - |-
         set -eux
 
@@ -98,4 +123,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 665bb8329786e39aca0fd082870ae83996c06c56
+        commit: b51d6e9d92d1204aecfe1c9af83948102b98a0df
