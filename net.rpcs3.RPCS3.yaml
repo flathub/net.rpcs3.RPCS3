@@ -69,16 +69,16 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DCMAKE_INSTALL_LIBDIR:PATH=lib
     sources:
-        - type: archive
-          url: https://github.com/libsdl-org/SDL/releases/download/release-3.2.10/SDL3-3.2.10.tar.gz
-          sha256: f87be7b4dec66db4098e9c167b2aa34e2ca10aeb5443bdde95ae03185ed513e0
-          x-checker-data:
-            type: anitya
-            project-id: 375746
-            stable-only: true
-            versions:
-                '<': "4.0.0"
-            url-template: https://github.com/libsdl-org/SDL/releases/download/release-${version}/SDL3-${version}.tar.gz
+      - type: archive
+        url: https://github.com/libsdl-org/SDL/releases/download/release-3.2.10/SDL3-3.2.10.tar.gz
+        sha256: f87be7b4dec66db4098e9c167b2aa34e2ca10aeb5443bdde95ae03185ed513e0
+        x-checker-data:
+          type: anitya
+          project-id: 375746
+          stable-only: true
+          versions:
+            <: 4.0.0
+          url-template: https://github.com/libsdl-org/SDL/releases/download/release-${version}/SDL3-${version}.tar.gz
 
   - name: rpcs3
     buildsystem: cmake-ninja
@@ -123,4 +123,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: b51d6e9d92d1204aecfe1c9af83948102b98a0df
+        commit: a004ebfffbb4da355efe5992ee49374c30644f6d
