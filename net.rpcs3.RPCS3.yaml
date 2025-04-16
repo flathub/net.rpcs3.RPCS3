@@ -55,6 +55,31 @@ modules:
           stable-only: true
           url-template: https://www.freedesktop.org/software/libevdev/libevdev-$version.tar.xz
 
+  - name: sdl3
+    buildsystem: cmake-ninja
+    builddir: true
+    cleanup:
+      - /include
+      - /lib/*.la
+      - /lib/*.a
+      - /lib/cmake
+      - /lib/pkgconfig
+      - /share/aclocal
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DCMAKE_INSTALL_LIBDIR:PATH=lib
+    sources:
+        - type: archive
+          url: https://github.com/libsdl-org/SDL/releases/download/release-3.2.10/SDL3-3.2.10.tar.gz
+          sha256: f87be7b4dec66db4098e9c167b2aa34e2ca10aeb5443bdde95ae03185ed513e0
+          x-checker-data:
+            type: anitya
+            project-id: 375746
+            stable-only: true
+            versions:
+                '<': "4.0.0"
+            url-template: https://github.com/libsdl-org/SDL/releases/download/release-${version}/SDL3-${version}.tar.gz
+
   - name: rpcs3
     buildsystem: cmake-ninja
     builddir: true
