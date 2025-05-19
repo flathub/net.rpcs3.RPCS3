@@ -123,4 +123,3 @@ modules:
       - type: git
         url: https://github.com/twig6943/rpcs33.git
         branch: master
-        commit: 62055bed3f69cbc2fa10f3fddd35d4c9278838bc
