@@ -88,7 +88,7 @@ modules:
       append-path: /usr/lib/sdk/llvm20/bin
       cflags: &optflags -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong
         -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection
-        -fcf-protection -fno-omit-frame-pointer
+        -fno-omit-frame-pointer
       cflags-override: true
       cxxflags: *optflags
       cxxflags-override: true
@@ -98,6 +98,10 @@ modules:
         CXX: clang++
         RANLIB: llvm-ranlib
       ldflags: -fuse-ld=lld
+      arch:
+        x86_64:
+          cflags: -fcf-protection
+          cxxflags: -fcf-protection
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DBUILD_LLVM=OFF
