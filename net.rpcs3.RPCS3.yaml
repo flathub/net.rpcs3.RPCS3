@@ -47,8 +47,8 @@ modules:
       - /share
     sources:
       - type: archive
-        url: https://www.freedesktop.org/software/libevdev/libevdev-1.13.4.tar.xz
-        sha256: f00ab8d42ad8b905296fab67e13b871f1a424839331516642100f82ad88127cd
+        url: https://www.freedesktop.org/software/libevdev/libevdev-1.13.5.tar.xz
+        sha256: 89918ae7b7c13936e6482604a77a2bfbbb74544c5d039fde01c3fa1bdf639987
         x-checker-data:
           type: anitya
           project-id: 20540
@@ -127,4 +127,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 2fcd542b0b87b4d6012af31cc49f7a2f8015c06e
+        commit: ae30cb5557aa4ba85376f6dcdab430f76a679d40
