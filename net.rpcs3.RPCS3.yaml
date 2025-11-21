@@ -70,8 +70,8 @@ modules:
       - -DCMAKE_INSTALL_LIBDIR:PATH=lib
     sources:
       - type: archive
-        url: https://github.com/libsdl-org/SDL/releases/download/release-3.2.24/SDL3-3.2.24.tar.gz
-        sha256: 81cc0fc17e5bf2c1754eeca9af9c47a76789ac5efdd165b3b91cbbe4b90bfb76
+        url: https://github.com/libsdl-org/SDL/releases/download/release-3.2.26/SDL3-3.2.26.tar.gz
+        sha256: dad488474a51a0b01d547cd2834893d6299328d2e30f479a3564088b5476bae2
         x-checker-data:
           type: anitya
           project-id: 375746
@@ -127,4 +127,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
-        commit: 3df0c8caef464cd1da8a8b41deaaae4f1ed0f57b
+        commit: 8ccc30725a661b5355d3e46e2a7410163d335ebc
