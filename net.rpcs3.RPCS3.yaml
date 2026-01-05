@@ -1,6 +1,6 @@
 id: net.rpcs3.RPCS3
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm20
@@ -25,7 +25,7 @@ add-extensions:
   org.freedesktop.Platform.ffmpeg-full:
     directory: lib/ffmpeg
     add-ld-path: .
-    version: '24.08'
+    version: '25.08'
     autodownload: true
     autodelete: false
 cleanup-commands:
@@ -55,40 +55,15 @@ modules:
           stable-only: true
           url-template: https://www.freedesktop.org/software/libevdev/libevdev-$version.tar.xz
 
-  - name: sdl3
-    buildsystem: cmake-ninja
-    builddir: true
-    cleanup:
-      - /include
-      - /lib/*.la
-      - /lib/*.a
-      - /lib/cmake
-      - /lib/pkgconfig
-      - /share/aclocal
-    config-opts:
-      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-      - -DCMAKE_INSTALL_LIBDIR:PATH=lib
-    sources:
-      - type: archive
-        url: https://github.com/libsdl-org/SDL/releases/download/release-3.4.0/SDL3-3.4.0.tar.gz
-        sha256: 082cbf5f429e0d80820f68dc2b507a94d4cc1b4e70817b119bbb8ec6a69584b8
-        x-checker-data:
-          type: anitya
-          project-id: 375746
-          stable-only: true
-          versions:
-            <: 4.0.0
-          url-template: https://github.com/libsdl-org/SDL/releases/download/release-${version}/SDL3-${version}.tar.gz
-
   - name: rpcs3
     buildsystem: cmake-ninja
     builddir: true
     build-options:
       append-ld-library-path: /usr/lib/sdk/llvm20/lib
       append-path: /usr/lib/sdk/llvm20/bin
-      cflags: &optflags -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong
-        -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection
-        -fno-omit-frame-pointer
+      cflags: &optflags -O2 -pipe -g -Wp,-D_FORTIFY_SOURCE=3 -fexceptions -fstack-protector-strong
+        -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection
+        -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer
       cflags-override: true
       cxxflags: *optflags
       cxxflags-override: true
