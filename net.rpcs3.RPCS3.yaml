@@ -1,6 +1,6 @@
 id: net.rpcs3.RPCS3
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm20
@@ -20,16 +20,6 @@ finish-args:
   - --share=network
   - --talk-name=org.freedesktop.ScreenSaver
   - --talk-name=org.mate.ScreenSaver
-
-add-extensions:
-  org.freedesktop.Platform.ffmpeg-full:
-    directory: lib/ffmpeg
-    add-ld-path: .
-    version: '24.08'
-    autodownload: true
-    autodelete: false
-cleanup-commands:
-  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
 
 modules:
   - shared-modules/glu/glu-9.json
