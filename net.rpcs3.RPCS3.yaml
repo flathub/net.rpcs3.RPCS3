@@ -21,16 +21,6 @@ finish-args:
   - --talk-name=org.freedesktop.ScreenSaver
   - --talk-name=org.mate.ScreenSaver
 
-add-extensions:
-  org.freedesktop.Platform.ffmpeg-full:
-    directory: lib/ffmpeg
-    add-ld-path: .
-    version: '25.08'
-    autodownload: true
-    autodelete: false
-cleanup-commands:
-  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
-
 modules:
   - shared-modules/glu/glu-9.json
   - shared-modules/glew/glew.json
@@ -101,5 +91,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
-        branch: master
-        commit: 9b256d71a9eb142654de96fdafdcbfda00cf64fe
+        tag: v0.0.39
+        commit: c5511200d5a8997b5413b37cb3a4860ab3189a63*
