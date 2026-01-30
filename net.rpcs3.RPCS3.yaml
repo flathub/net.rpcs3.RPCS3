@@ -92,4 +92,4 @@ modules:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
         tag: v0.0.39
-        commit: c5511200d5a8997b5413b37cb3a4860ab3189a63*
+        commit: c5511200d5a8997b5413b37cb3a4860ab3189a63
