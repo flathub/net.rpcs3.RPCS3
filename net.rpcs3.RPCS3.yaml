@@ -79,3 +79,5 @@ modules:
         url: https://github.com/RPCS3/rpcs3.git
         branch: master
         commit: 260c98618614c070067c6b0b1a82f2e8199d7d4a
+      - type: patch
+        path: rehost-metainfo-screenshot.patch
