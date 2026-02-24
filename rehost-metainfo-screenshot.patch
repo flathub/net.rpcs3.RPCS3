@@ -1,0 +1,11 @@
+--- a/rpcs3/rpcs3.metainfo.xml    2026-02-24 18:05:30.212700447 +0100
++++ b/rpcs3/rpcs3.metainfo.xml    2026-02-24 18:09:02.057700515 +0100
+@@ -22,7 +22,7 @@
+     <screenshots>
+         <screenshot type="default">
+             <caption>RPCS3 running a game using the Vulkan backend</caption>
+-            <image type="source">https://rpcs3.net/blog/wp-content/uploads/2017/05/progress/vklinux.jpg</image>
++            <image type="source">https://i.imgur.com/ounMfm3.png</image>
+         </screenshot>
+     </screenshots>
+     <url type="homepage">https://rpcs3.net</url>
