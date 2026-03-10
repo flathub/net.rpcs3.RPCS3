@@ -87,7 +87,7 @@ modules:
       - -DUSE_SYSTEM_LIBPNG=ON
       - -DUSE_SYSTEM_LIBUSB=ON
       - -DUSE_SYSTEM_OPENAL=ON
-      # - -DUSE_SYSTEM_SDL=ON # Needs SDL3 3.4.0
+      - -DUSE_SYSTEM_SDL=ON
       - -DUSE_SYSTEM_ZLIB=ON
       - -DUSE_SYSTEM_ZSTD=ON
       - -Wno-dev
