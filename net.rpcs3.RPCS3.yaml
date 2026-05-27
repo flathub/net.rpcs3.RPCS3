@@ -83,7 +83,7 @@ modules:
       - -DUSE_SYSTEM_CURL=ON
       - -DUSE_SYSTEM_FFMPEG=ON
       # - -DUSE_SYSTEM_PROTOBUF=ON # Needs protobuf >= 33.0.0
-      - -DUSE_SYSTEM_GLSLANG=ON
+      # - -DUSE_SYSTEM_GLSLANG=ON
       - -DUSE_SYSTEM_LIBPNG=ON
       - -DUSE_SYSTEM_LIBUSB=ON
       - -DUSE_SYSTEM_OPENAL=ON
