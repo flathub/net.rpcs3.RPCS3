@@ -5,7 +5,7 @@ sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.llvm20
 command: rpcs3
-seperate-locales: false
+separate-locales: false
 rename-desktop-file: rpcs3.desktop
 rename-appdata-file: rpcs3.metainfo.xml
 rename-icon: rpcs3
