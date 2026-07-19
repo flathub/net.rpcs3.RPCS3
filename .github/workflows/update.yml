@@ -5,14 +5,14 @@ on:
   workflow_dispatch: # can be manually dispatched under GitHub's "Actions" tab
 
 jobs:
-  flatpak-external-data-checker:
+  update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
 
       - name: Check for branch update
         run: |
-          CURRENT_SHA=$(yq -r '.modules[-1].sources[].commit' net.rpcs3.RPCS3.yaml)
+          CURRENT_SHA=$(yq -r '.modules[-1].sources[0].commit' net.rpcs3.RPCS3.yaml)
           LATEST_SHA=$(curl -s https://api.github.com/repos/RPCS3/rpcs3/branches/master | jq -r .commit.sha)
           echo "Current RPCS3 commit: ${CURRENT_SHA}"
           echo "Latest RPCS3 commit: ${LATEST_SHA}"
