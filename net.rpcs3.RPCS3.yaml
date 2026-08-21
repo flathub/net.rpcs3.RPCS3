@@ -103,7 +103,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/RPCS3/rpcs3.git
-        commit: 7a90d09cfe3c31bf95c3cb63c6301c5c0824c531
+        commit: 243d7db5b53737493020338f3eab1f333206a5d6
         # branch: master
       - type: patch
         path: add-non-official-disclaimer.patch
