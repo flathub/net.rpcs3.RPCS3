@@ -14,6 +14,7 @@ finish-args:
   - --filesystem=home:ro
   - --filesystem=/media
   - --filesystem=/run/media
+  - --filesystem=xdg-run/app/com.discordapp.Discord:create
   - --share=ipc
   - --socket=fallback-x11
   - --socket=pulseaudio
@@ -77,6 +78,7 @@ modules:
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
       - -DBUILD_LLVM=OFF
+      - -DUSE_DISCORD_RPC=ON
       - -DUSE_NATIVE_INSTRUCTIONS=OFF
       - -DUSE_PRECOMPILED_HEADERS=OFF
       - -DUSE_SDL=ON
