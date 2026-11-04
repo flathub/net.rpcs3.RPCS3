@@ -41,7 +41,7 @@ jobs:
           COMMIT_BRANCH: update/rpcs3-${{ steps.update.outputs.latest_commit }}
           COMMIT_TITLE: "rpcs3: Update to commit ${{ steps.update.outputs.latest_commit }}"
           COMMIT_BODY: |
-            ## Update RPCS3
+            Update RPCS3
 
             - **Current commit**: https://github.com/RPCS3/rpcs3/commit/${{ steps.update.outputs.current_commit }}
             - **New commit**: https://github.com/RPCS3/rpcs3/commit/${{ steps.update.outputs.latest_commit }}
@@ -54,5 +54,5 @@ jobs:
           git checkout -b "$COMMIT_BRANCH"
           git commit -am "$COMMIT_BODY"
           git push -u origin "$COMMIT_BRANCH"
-          gh pr create --title "$COMMIT_TITLE" --body "$COMMIT_BODY"
+          gh pr create --title "$COMMIT_TITLE" --body "## $COMMIT_BODY"
           gh pr merge --delete-branch --rebase --auto "$COMMIT_BRANCH"
